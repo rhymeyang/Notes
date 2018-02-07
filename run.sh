@@ -8,6 +8,7 @@ source "./deploy.conf"
 
 declare -r workDir=${PWD}
 declare -r siteDir="${workDir}/_site"
+declare -r indexfile="${siteDir}/index.md"
 
 function __clean_site_dir(){
     cd ${siteDir}
@@ -103,9 +104,14 @@ function convert_ipynb_list(){
     # msg_info "origin files"
     # msg_info "${file_list[@]}"
     
+    echo ""> ${indexfile}
     for org_file in ${file_list[@]}
     do
         tar_file=$(echo ${org_file}| sed  -e "s/^_post/_site/g" | sed  -e "s/.ipynb$/.html/g")
+        article_name=$(echo ${org_file##*/}| sed  -e "s/.ipynb//g")
+
+        msg_info "article_name $article_name"
+
         ipython nbconvert --to html ${org_file} 
         org_html=$(echo ${org_file}| sed  -e "s/.ipynb$/.html/g" )
         tar_dir=${tar_file%/*}
@@ -118,8 +124,11 @@ function convert_ipynb_list(){
         # msg_info $org_file
         # msg_warning $tar_file
         msg_info "mv -f $org_html $tar_file"
+        
         mv -f $org_html $tar_file
-
+        tar_file=$(echo ${tar_file}| sed -e "s/^_site//g")
+        echo "+ [$article_name](${baseUrl}${tar_file})" >> ${indexfile}
+        # echo ${tar_file} | sed  -e "s/^_site/[$article_name](${baseUrl})/g" >> ${indexfile}
     done
 }
 
