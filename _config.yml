@@ -1,0 +1,8 @@
+baseurl: "Notes" 
+url: "https://rhymeyang.github.io"
+site_name: Vicky's Blog
+
+py_dir: "_post"
+site_dir: "_site"
+
+

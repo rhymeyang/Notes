@@ -1,0 +1,46 @@
+model 
+{
+    'name': 'Chapter1_NumPy快速入门.ipynb', 
+    'path': 'Chapter1_NumPy快速入门.ipynb', 
+    'last_modified': datetime.datetime(2018, 2, 10, 20, 29, 28, 485106, tzinfo=<notebook._tz.tzUTC object at 0x7fcbb8b62470>), 
+    'created': datetime.datetime(2018, 2, 10, 20, 29, 28, 485106, tzinfo=<notebook._tz.tzUTC object at 0x7fcbb8b62470>), 
+    'content': None, 
+    'format': None, 
+    'mimetype': None, 
+    'writable': True, 
+    'type': 'notebook'}
+
+
+os_path /disk2/tools/blog/jupyters/Chapter1_NumPy快速入门.ipynb
+
+
+contents_manager <notebook.services.contents.largefilemanager.LargeFileManager object at 0x7fcbb7b9a2e8>
+
+
+model 
+
+{
+    'name': 'Chapter1_NumPy快速入门.ipynb', 
+    'path': 'numpy/Chapter1_NumPy快速入门.ipynb', 
+    'last_modified': datetime.datetime(2018, 2, 10, 22, 15, 46, 363055, tzinfo=<notebook._tz.tzUTC object at 0x7fb08bc2c3c8>), 
+    'created': datetime.datetime(2018, 2, 10, 22, 15, 46, 363055, tzinfo=<notebook._tz.tzUTC object at 0x7fb08bc2c3c8>), 
+    'content': None, 
+    'format': None, 
+    'mimetype': None, 
+    'writable': True, '
+    type': 'notebook'}
+
+os_path /disk2/vickycode/Notes/_post/numpy/Chapter1_NumPy快速入门.ipynb
+
+contents_manager <notebook.services.contents.largefilemanager.LargeFileManager object at 0x7fb08ac63208>
+
+
+model 
+
+{
+    'name': '基础概念.ipynb', 
+    'path': '_post/math/基础概念.ipynb', 'last_modified': datetime.datetime(2018, 2, 10, 23, 17, 36, 478669, tzinfo=<notebook._tz.tzUTC object at 0x7fb384fce470>), 'created': datetime.datetime(2018, 2, 10, 23, 17, 36, 478669, tzinfo=<notebook._tz.tzUTC object at 0x7fb384fce470>), 'content': None, 'format': None, 'mimetype': None, 'writable': True, 'type': 'notebook'}
+
+os_path /disk2/vickycode/Notes/_post/math/基础概念.ipynb
+
+contents_manager <notebook.services.contents.largefilemanager.LargeFileManager object at 0x7fb384006400>
