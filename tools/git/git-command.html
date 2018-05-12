@@ -12028,7 +12028,19 @@ a.node-name--H4 {
 <li><code>git push origin &lt;local_branch&gt;</code> : 创建远程分支， origin是远程仓库名</li>
 <li><code>git push origin &lt;local_branch&gt;:&lt;remote_branch&gt;</code> : 创建远程分支</li>
 <li><code>git push origin :&lt;remote_branch&gt;</code> :先删除本地分支(<code>git branch -d &lt;branch&gt;</code>)，然后再push删除远程分支</li>
+<li><code>git push --recurse-submodules=check --progress "dataReports" refs/heads/dataReports:refs/heads/master</code><ul>
+<li>本地 dataReports 推送到远程 master</li>
 </ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Git&#36828;&#31243;&#20179;&#24211;&#31649;&#29702;">Git&#36828;&#31243;&#20179;&#24211;&#31649;&#29702;<a class="anchor-link" href="#Git&#36828;&#31243;&#20179;&#24211;&#31649;&#29702;"></a></h2><ul>
 <li><code>git remote -v</code> : 查看远程服务器地址和仓库名称</li>
 <li><code>git remote show origin</code> : 查看远程服务器仓库状态</li>
@@ -12051,6 +12063,14 @@ a.node-name--H4 {
 <li><code>git branch --set-upstream master origin/master</code></li>
 <li><code>git branch --set-upstream develop origin/develop</code></li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#26412;&#22320;&#20179;&#24211;&#31649;&#29702;">&#26412;&#22320;&#20179;&#24211;&#31649;&#29702;<a class="anchor-link" href="#&#26412;&#22320;&#20179;&#24211;&#31649;&#29702;"></a></h2><h3 id="&#36801;&#20986;&#22810;&#20221;">&#36801;&#20986;&#22810;&#20221;<a class="anchor-link" href="#&#36801;&#20986;&#22810;&#20221;"></a></h3>
 <pre><code>git worktree add [-f] [--detach] [--checkout] [--lock] [-b &lt;new-branch&gt;] &lt;path&gt; [&lt;commit-ish&gt;]
 git worktree list [--porcelain]
