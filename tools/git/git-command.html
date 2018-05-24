@@ -12133,6 +12133,66 @@ git config --global --unset https.proxy</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="gitlab-API">gitlab API<a class="anchor-link" href="#gitlab-API"></a></h2><h3 id="doc">doc<a class="anchor-link" href="#doc"></a></h3><ul>
+<li><a href="https://docs.gitlab.com/ee/api/">https://docs.gitlab.com/ee/api/</a></li>
+<li><a href="https://docs.gitlab.com/ee/api/projects.html">https://docs.gitlab.com/ee/api/projects.html</a></li>
+</ul>
+<h3 id="&#33719;&#21462;&#39033;&#30446;id">&#33719;&#21462;&#39033;&#30446;id<a class="anchor-link" href="#&#33719;&#21462;&#39033;&#30446;id"></a></h3>
+<pre><code>curl -XGET --header "PRIVATE-TOKEN: XXX" "https://gitlab.com/api/v3/projects/owned"
+
+curl https://gitlab.com/api/v3/projects/owned?private_token=XXX
+curl https://gitlab.com/api/v4/users/rhymeyang/projects?private_token=XXX
+
+</code></pre>
+<div class="highlight"><pre><span></span>https://gitlab.com/api/v4/projects/6465317/repository/archive?private_token<span class="o">=</span>xxx
+https://gitlab.com/api/v4/users/rhymeyang/projects?private_token<span class="o">=</span>xxx
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#20840;&#37096;&#39033;&#30446;">&#20840;&#37096;&#39033;&#30446;<a class="anchor-link" href="#&#20840;&#37096;&#39033;&#30446;"></a></h3>
+<pre><code>curl https://gitlab.com/api/v4/projects?private_token=XXX
+
+</code></pre>
+<h3 id="&#19979;&#36733;&#25991;&#20214;">&#19979;&#36733;&#25991;&#20214;<a class="anchor-link" href="#&#19979;&#36733;&#25991;&#20214;"></a></h3>
+<pre><code>wget -O forbackup.tar.gz https://gitlab.com/api/v4/projects/6472543/repository/archive?private_token=XXX
+
+wget --header "PRIVATE-TOKEN: XXX"  https://gitlab.com/api/v4/projects/6472543/repository/archive.tar.gz
+
+wget --header "PRIVATE-TOKEN: XXX" https://gitlab.com/rhymeyang/forbackup-tk/-/archive/master/forbackup-tk-master.zip
+
+wget --header "PRIVATE-TOKEN: XXX" https://gitlab.com/rhymeyang/forbackup-tk/-/archive/master/forbackup-tk-master.tar.gz</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>git archive --remote ssh://git@gitlab.com:rhymeyang/forbackup-tk.git
+
+git archive --format=zip --remote ssh://git@gitlab.com/rhymeyang/forbackup-tk.git master
+
+git archive --format=zip --remote=https://gitlab.com/rhymeyang/forbackup-tk.git master
+
+git clone --bare https://gitlab.com/XXX.git
+git -C XXX.git archive --output=../XXX.tgz master
+rm -rf XXX.git</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#21442;&#32771;">&#21442;&#32771;<a class="anchor-link" href="#&#21442;&#32771;"></a></h2><h3 id="video">video<a class="anchor-link" href="#video"></a></h3><ul>
 <li><a href="https://www.youtube.com/channel/UCshmCws1MijkZLMkPmOmzbQ">Dan Gitschooldude</a></li>
 <li><a href="https://www.youtube.com/watch?v=Bo-8EfDpKxA">Remove a file from all git history</a></li>
