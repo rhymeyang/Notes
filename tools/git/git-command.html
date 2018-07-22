@@ -12032,6 +12032,7 @@ a.node-name--H4 {
 <li>本地 dataReports 推送到远程 master</li>
 </ul>
 </li>
+<li><code>git clone --single-branch -b branch host:/dir.git</code></li>
 </ul>
 
 </div>
@@ -12093,8 +12094,12 @@ git config --edit
 git config --edit --global
 sudo git config --system color.ui true
 
-git config --global http.proxy socks5://proxy_host:1080
-git config --global https.proxy socks5://proxy_host:1080
+git config --global http.proxy socks5://proxySwitch:2080
+git config --global https.proxy socks5://proxySwitch:2080
+
+git config --global http.proxy http://proxySwitch:8118
+git config --global https.proxy  http://proxySwitch:8118
+
 
 git config --global http.proxy http://proxyuser:proxypwd@proxy_host:1080
 
@@ -12121,10 +12126,161 @@ git config --global --unset https.proxy</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#36935;&#21040;&#38382;&#39064;">&#36935;&#21040;&#38382;&#39064;<a class="anchor-link" href="#&#36935;&#21040;&#38382;&#39064;"></a></h2><h3 id="git-pull-&#30896;&#21040;&#25298;&#32477;&#21512;&#24182;&#26080;&#20851;&#21382;&#21490;">git pull &#30896;&#21040;&#25298;&#32477;&#21512;&#24182;&#26080;&#20851;&#21382;&#21490;<a class="anchor-link" href="#git-pull-&#30896;&#21040;&#25298;&#32477;&#21512;&#24182;&#26080;&#20851;&#21382;&#21490;"></a></h3><p>原始本地分支要备份</p>
+<h1 id="&#36935;&#21040;&#38382;&#39064;">&#36935;&#21040;&#38382;&#39064;<a class="anchor-link" href="#&#36935;&#21040;&#38382;&#39064;"></a></h1><h2 id="git-pull-&#30896;&#21040;&#25298;&#32477;&#21512;&#24182;&#26080;&#20851;&#21382;&#21490;">git pull &#30896;&#21040;&#25298;&#32477;&#21512;&#24182;&#26080;&#20851;&#21382;&#21490;<a class="anchor-link" href="#git-pull-&#30896;&#21040;&#25298;&#32477;&#21512;&#24182;&#26080;&#20851;&#21382;&#21490;"></a></h2><p>原始本地分支要备份</p>
 <p>本命令冲突合并可能较多</p>
 
 <pre><code>git pull origin master --allow-unrelated-histories </code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="RPC-failed">RPC failed<a class="anchor-link" href="#RPC-failed"></a></h2><p><code>Git Clone Fails - error: RPC failed; result=56, HTTP code = 200</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>$ git clone https://github.com/eidheim/Simple-WebSocket-Server
+正克隆到 <span class="s1">&#39;Simple-WebSocket-Server&#39;</span>...
+error: RPC failed<span class="p">;</span> <span class="nv">result</span><span class="o">=</span><span class="m">56</span>, HTTP <span class="nv">code</span> <span class="o">=</span> <span class="m">0</span>
+fatal: The remote end hung up unexpectedly
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#30740;&#31350;">&#30740;&#31350;<a class="anchor-link" href="#&#30740;&#31350;"></a></h3><p>On Linux</p>
+<p>Execute the following in the command line before executing the Git command:</p>
+
+<pre><code>export GIT_TRACE_PACKET=1
+export GIT_TRACE=1
+export GIT_CURL_VERBOSE=1
+
+</code></pre>
+<p>On Windows</p>
+<p>Execute the following in the command line before executing the Git command:</p>
+
+<pre><code>set GIT_TRACE_PACKET=1
+set GIT_TRACE=1
+set GIT_CURL_VERBOSE=1</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>解决： unset 全局代理</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Peer-reports-incompatible">Peer reports incompatible<a class="anchor-link" href="#Peer-reports-incompatible"></a></h2><p>fatal: unable to access '<a href="https://github.com/XXX.git/">https://github.com/XXX.git/</a>': Peer reports incompatible or unsupported protocol version.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#30740;&#31350;">&#30740;&#31350;<a class="anchor-link" href="#&#30740;&#31350;"></a></h3><p><strong>step 1</strong></p>
+
+<pre><code>curl -IL https://github.com -v
+
+* About to connect() to github.com port 443 (#0)
+*   Trying 192.30.253.113...
+* Connected to github.com (192.30.253.113) port 443 (#0)
+* Initializing NSS with certpath: sql:/etc/pki/nssdb
+*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+  CApath: none
+* NSS error -12190 (SSL_ERROR_PROTOCOL_VERSION_ALERT)
+* Peer reports incompatible or unsupported protocol version.
+* Closing connection 0
+curl: (35) Peer reports incompatible or unsupported protocol version.
+
+
+</code></pre>
+<p><strong>step 2</strong></p>
+
+<pre><code>yum info openssl 
+yum install openssl -y
+
+
+</code></pre>
+<p><strong>step 3</strong></p>
+
+<pre><code># curl -IL https://github.com -v
+* About to connect() to github.com port 443 (#0)
+*   Trying 192.30.253.113...
+* Connected to github.com (192.30.253.113) port 443 (#0)
+* Initializing NSS with certpath: sql:/etc/pki/nssdb
+*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+  CApath: none
+* NSS error -12190 (SSL_ERROR_PROTOCOL_VERSION_ALERT)
+* Peer reports incompatible or unsupported protocol version.
+* Closing connection 0
+curl: (35) Peer reports incompatible or unsupported protocol version.
+
+</code></pre>
+<p><strong>step 4</strong></p>
+
+<pre><code>yum group install "Development Tools" -y
+
+yum update -y
+
+</code></pre>
+<p><strong>step 5</strong></p>
+
+<pre><code>curl -IL https://github.com -v
+
+</code></pre>
+<p>works</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="github">github<a class="anchor-link" href="#github"></a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="https-&#20813;&#23494;&#30721;">https &#20813;&#23494;&#30721;<a class="anchor-link" href="#https-&#20813;&#23494;&#30721;"></a></h3><p>文件: <code>.git-credentials</code></p>
+
+<pre><code>// 永久存储
+git config --global credential.helper store
+
+// 设置临时
+git config –global credential.helper cache
+
+
+</code></pre>
+<h3 id="&#21333;&#29420;&#23545;&#26576;&#20010;&#39033;&#30446;&#20813;&#23494;">&#21333;&#29420;&#23545;&#26576;&#20010;&#39033;&#30446;&#20813;&#23494;<a class="anchor-link" href="#&#21333;&#29420;&#23545;&#26576;&#20010;&#39033;&#30446;&#20813;&#23494;"></a></h3><p>如果还未添加远程地址，可以输入一下命令：</p>
+<p>git remote add origin <a href="https://username:password@git.oschina.net/diligentyang/ysy107lab.git">https://username:password@git.oschina.net/diligentyang/ysy107lab.git</a></p>
 
 </div>
 </div>

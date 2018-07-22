@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>shell_base_grep</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>chrome_headless</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.0.1/tocbot.min.js"></script>
 
@@ -11909,7 +11909,11 @@ a.node-name--H4 {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="shell-&#22522;&#30784;&#21629;&#20196;---grep">shell &#22522;&#30784;&#21629;&#20196; - grep<a class="anchor-link" href="#shell-&#22522;&#30784;&#21629;&#20196;---grep"></a></h1>
+<h1 id="Headless-Chrome-and-API">Headless Chrome and API<a class="anchor-link" href="#Headless-Chrome-and-API"></a></h1><ul>
+<li><a href="http://akai-tsuki.hatenablog.com/entry/2017/06/18/000000">Use Google Chrome v59 Headless mode on CentOS 7.</a></li>
+<li><a href="https://thief.one/2018/03/06/1/">Headless Chrome and API</a></li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -11917,123 +11921,311 @@ a.node-name--H4 {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="grep-&#21629;&#20196;&#20013;&#30340;&#27491;&#21017;&#34920;&#36798;&#24335;">grep &#21629;&#20196;&#20013;&#30340;&#27491;&#21017;&#34920;&#36798;&#24335;<a class="anchor-link" href="#grep-&#21629;&#20196;&#20013;&#30340;&#27491;&#21017;&#34920;&#36798;&#24335;"></a></h1><h2 id="&#22522;&#30784;&#29992;&#27861;">&#22522;&#30784;&#29992;&#27861;<a class="anchor-link" href="#&#22522;&#30784;&#29992;&#27861;"></a></h2><h3 id="1.-&#21305;&#37197;&#20320;&#35201;&#26597;&#25214;&#30340;&#20869;&#23481;">1. &#21305;&#37197;&#20320;&#35201;&#26597;&#25214;&#30340;&#20869;&#23481;<a class="anchor-link" href="#1.-&#21305;&#37197;&#20320;&#35201;&#26597;&#25214;&#30340;&#20869;&#23481;"></a></h3>
-<pre><code>grep string filename
-
-</code></pre>
-<h3 id="2.-&#21305;&#37197;&#20855;&#20307;&#23383;&#31526;">2. &#21305;&#37197;&#20855;&#20307;&#23383;&#31526;<a class="anchor-link" href="#2.-&#21305;&#37197;&#20855;&#20307;&#23383;&#31526;"></a></h3>
-<pre><code>grep '[vV]ivek' filename
-
-</code></pre>
-<p>在括号内的表达式中，在<code>[:</code>和<code>:]</code>中所附的字符类的名称：代表属于该类的所有字符的列表。标准字符类名称：</p>
+<h2 id="&#30456;&#20851;&#36164;&#28304;">&#30456;&#20851;&#36164;&#28304;<a class="anchor-link" href="#&#30456;&#20851;&#36164;&#28304;"></a></h2><p>以上演示了使用命令行的方式操作headless chrome，那么怎么在代码中使用它呢？
+api工具如下：</p>
 <ul>
-<li><code>[:alnum:]</code> – 字母数字字符。</li>
-<li><code>[:alpha:]</code> – 字母顺序</li>
-<li><code>[:blank:]</code> – 空格和制表符。</li>
-<li><code>[:digit:]</code> – 数字： '0 1 2 3 4 5 6 7 8 9'。</li>
-<li><code>[:lower:]</code> – 小写字母：'a b c d e f'。</li>
-<li><code>[:space:]</code> – 特殊字符：制表符，换行符，垂直制表符、换页，回车，和空间。</li>
-<li><code>[:upper:]</code> – 大写字母：'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'。</li>
+<li>官方：<a href="https://github.com/GoogleChrome/puppeteer">puppeteer</a></li>
+<li>底层：chrome-remote-interface</li>
+<li>活跃：<a href="https://github.com/graphcool/chromeless">chromeless</a></li>
+<li>非官方：<a href="https://github.com/yujiosaka/headless-chrome-crawler">headless-chrome-crawler</a></li>
 </ul>
-<h3 id="3.-&#20351;&#29992;&#36890;&#37197;&#31526;">3. &#20351;&#29992;&#36890;&#37197;&#31526;<a class="anchor-link" href="#3.-&#20351;&#29992;&#36890;&#37197;&#31526;"></a></h3>
-<pre><code>grep '\&lt;b.t\&gt;' filename
-
-grep '192\.168\.1\.254' /etc/hosts
-
-</code></pre>
-<h2 id="&#28145;&#20837;&#25506;&#32034;-grep-&#39640;&#32423;&#26597;&#25214;&#27169;&#24335;">&#28145;&#20837;&#25506;&#32034; grep &#39640;&#32423;&#26597;&#25214;&#27169;&#24335;<a class="anchor-link" href="#&#28145;&#20837;&#25506;&#32034;-grep-&#39640;&#32423;&#26597;&#25214;&#27169;&#24335;"></a></h2><h3 id="1.-&#26816;&#32034;&#19968;&#20010;&#20855;&#26377;&#20197;-&#8216;-&#8216;-&#24320;&#22836;&#30340;&#30340;&#27169;&#24335;&#65311;">1. &#26816;&#32034;&#19968;&#20010;&#20855;&#26377;&#20197; &#8216;-&#8216; &#24320;&#22836;&#30340;&#30340;&#27169;&#24335;&#65311;<a class="anchor-link" href="#1.-&#26816;&#32034;&#19968;&#20010;&#20855;&#26377;&#20197;-&#8216;-&#8216;-&#24320;&#22836;&#30340;&#30340;&#27169;&#24335;&#65311;"></a></h3><p>使用 <code>-e</code> 选项搜索所有匹配 '–test–' 的结果。grep 会尝试把 '–test–' 作为一个选项解析：</p>
-
-<pre><code>grep -e '--test--' filename
-
-</code></pre>
-<h3 id="2.-grep&#20013;&#20351;&#29992;-OR-&#30340;&#36923;&#36753;&#36816;&#31639;">2. grep&#20013;&#20351;&#29992; OR &#30340;&#36923;&#36753;&#36816;&#31639;<a class="anchor-link" href="#2.-grep&#20013;&#20351;&#29992;-OR-&#30340;&#36923;&#36753;&#36816;&#31639;"></a></h3>
-<pre><code>grep -E 'word1|word2' filename
-egrep 'word1|word2' filename
-grep 'word1\|word2' filename
-
-</code></pre>
-<h3 id="3.-grep&#20013;&#20351;&#29992;-AND-&#30340;&#36923;&#36753;&#36816;&#31639;">3. grep&#20013;&#20351;&#29992; AND &#30340;&#36923;&#36753;&#36816;&#31639;<a class="anchor-link" href="#3.-grep&#20013;&#20351;&#29992;-AND-&#30340;&#36923;&#36753;&#36816;&#31639;"></a></h3>
-<pre><code>grep 'word1' filename | grep 'word2'
-grep 'foo.*bar\|word3.*word4' filename
-
-</code></pre>
-<h3 id="4.-&#27979;&#35797;&#24207;&#21015;">4. &#27979;&#35797;&#24207;&#21015;<a class="anchor-link" href="#4.-&#27979;&#35797;&#24207;&#21015;"></a></h3><p>使用下面的语法测试一个字符在序列中的重复的次数：</p>
-
-<pre><code>{N}
-{N,}
-{min,max}
-
-</code></pre>
-<p>匹配包含两个字母 v 的字符串结果：</p>
-
-<pre><code>egrep "v{2}" filename
-
-</code></pre>
-<p>下面的例子中将检索文件内包含 'col' 和 'cool' 的字符串结果：</p>
-
-<pre><code>egrep 'co{1,2}l' filename
-
-
-</code></pre>
-<p>下面的例子中将匹配至少含有3个字母 c 的结果：</p>
-
-<pre><code>egrep 'c{3,}' filename
-
-</code></pre>
-<p>下面的示例将匹配 '91-1234567890' 格式的手机号码（即 '两位数字-十位数字'）</p>
-
-<pre><code>grep "[[:digit:]]\{2\}[ -]\?[[:digit:]]\{10\}" filename
-
-</code></pre>
-<h3 id="5.-grep-&#30340;&#36755;&#20986;&#32467;&#26524;&#39640;&#20142;&#26631;&#27880;">5. grep &#30340;&#36755;&#20986;&#32467;&#26524;&#39640;&#20142;&#26631;&#27880;<a class="anchor-link" href="#5.-grep-&#30340;&#36755;&#20986;&#32467;&#26524;&#39640;&#20142;&#26631;&#27880;"></a></h3><p>使用下面例子的语法：</p>
-
-<pre><code>grep --color regex filename
-
-</code></pre>
-<h3 id="6.-&#22914;&#20309;&#20351;-grep-&#30340;&#36755;&#20986;&#21482;&#26174;&#31034;&#21305;&#37197;&#30340;&#37096;&#20998;&#32780;&#19981;&#26159;&#25972;&#34892;&#65311;">6. &#22914;&#20309;&#20351; grep &#30340;&#36755;&#20986;&#21482;&#26174;&#31034;&#21305;&#37197;&#30340;&#37096;&#20998;&#32780;&#19981;&#26159;&#25972;&#34892;&#65311;<a class="anchor-link" href="#6.-&#22914;&#20309;&#20351;-grep-&#30340;&#36755;&#20986;&#21482;&#26174;&#31034;&#21305;&#37197;&#30340;&#37096;&#20998;&#32780;&#19981;&#26159;&#25972;&#34892;&#65311;"></a></h3><p>使用下面例子的语法：</p>
-
-<pre><code>grep -o regex filename</code></pre>
+<p>Python相关的API：</p>
+<ul>
+<li><a href="https://github.com/fate0/pychrome">pychrome</a></li>
+<li><a href="https://github.com/miyakogi/pyppeteer">Pyppeteer 推荐</a></li>
+<li><a href="https://github.com/iiSeymour/chromote">chromote</a></li>
+<li><a href="https://github.com/wasiher/chrome_remote_interface_python">chrome_remote_interface_python</a></li>
+</ul>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="setting">setting<a class="anchor-link" href="#setting"></a></h2><h3 id="chrome.repo">chrome.repo<a class="anchor-link" href="#chrome.repo"></a></h3><p>/etc/yum.repos.d/chrome.repo</p>
+
+<pre><code>config
+[google-chrome]
+name=google-chrome
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub</code></pre>
+<p>源管理</p>
+<div class="highlight"><pre><span></span>yum repolist
+yum-config-manager
+
+yum-config-manager --add-repo http://www.example.com/example.repo
+
+yum-config-manager --disable XXX<span class="se">\*</span>
 </pre></div>
 
 </div>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-
-<div id="7efd6b0f-9a1e-4284-b61c-4410a1d41f0a"></div>
-<div class="output_subarea output_javascript ">
-<script type="text/javascript">
-var element = $('#7efd6b0f-9a1e-4284-b61c-4410a1d41f0a');
-$.getScript('https://kmahelona.github.io/ipython_notebook_goodies/ipython_notebook_toc.js')
-</script>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>yum info google-chrome-stable
+
+名称    ：google-chrome-stable
+架构    ：x86_64
+版本    ：67.0.3396.87
+发布    ：1
+大小    ：50 M
+源    ：google-chrome/x86_64
+简介    ： Google Chrome
+网址    ：https://chrome.google.com/
+协议    ： Multiple, see https://chrome.google.com/
+描述    ： The web browser from Google
+         : 
+         : Google Chrome is a browser that combines a minimal design with sophisticated technology to make
+         : the web faster, safer, and easier.
+
+
+yum install -y google-chrome-stable
+</pre></div>
 
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Install-mesa-libOSMesa-and-fonts">Install mesa-libOSMesa and fonts<a class="anchor-link" href="#Install-mesa-libOSMesa-and-fonts"></a></h3><div class="highlight"><pre><span></span>yum install -y mesa-libOSMesa mesa-libOSMesa-devel gnu-free-sans-fonts
+yum install -y ipa-gothic-fonts ipa-pgothic-fonts
+
+find / -name <span class="s2">&quot;libOSMesa*&quot;</span> -type f
+/usr/lib64/libOSMesa.so.8.0.0
+
+ln -s /usr/lib64/libOSMesa.so.8.0.0 /opt/google/chrome/libosmesa.so
+</pre></div>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="use-headless-mode">use headless mode<a class="anchor-link" href="#use-headless-mode"></a></h3><p>google-chrome --headless --print-to-pdf <a href="https://www.taobao.com">https://www.taobao.com</a></p>
+<blockquote>
+<pre><code>google-chrome --headless --print-to-pdf https://www.taobao.com
+[0613/113852.518653:ERROR:zygote_host_impl_linux.cc(88)] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.</code></pre>
+</blockquote>
+<h4 id="&#35299;&#20915;">&#35299;&#20915;<a class="anchor-link" href="#&#35299;&#20915;"></a></h4><ul>
+<li>/opt/google/chrome/google-chrome</li>
+<li>找到 <code>exec -a "$0" "$HERE/chrome" "$@"</code></li>
+<li>改为 <code>exec -a "$0" "$HERE/chrome" "$@" --user-data-dir --no-sandbox</code></li>
+</ul>
+<p>截屏</p>
 
+<pre><code>google-chrome --headless --screenshot --window-size=1024,2000 --hide-scrollbars http://akai-tsuki.hatenablog.com/
+# ls -1 screenshot.png
+screenshot.png</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Headless-Chrome-&#22522;&#30784;&#29992;&#27861;">Headless Chrome &#22522;&#30784;&#29992;&#27861;<a class="anchor-link" href="#Headless-Chrome-&#22522;&#30784;&#29992;&#27861;"></a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#33719;&#21462;&#28304;&#30721;">&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#33719;&#21462;&#28304;&#30721;<a class="anchor-link" href="#&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#33719;&#21462;&#28304;&#30721;"></a></h3><p><code>–dump-dom</code> 标志将打印 document.body.innerHTML 到标准输出：</p>
+
+<pre><code>google-chrome --headless --disable-gpu --dump-dom https://thief.one/
+
+</code></pre>
+<h3 id="&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#23558;&#28304;&#30721;&#21019;&#24314;&#25104;&#19968;&#20010;PDF">&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#23558;&#28304;&#30721;&#21019;&#24314;&#25104;&#19968;&#20010;PDF<a class="anchor-link" href="#&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#23558;&#28304;&#30721;&#21019;&#24314;&#25104;&#19968;&#20010;PDF"></a></h3><p><code>–print-to-pdf</code> 标志将页面转出为 PDF 文件：</p>
+
+<pre><code>google-chrome --headless --disable-gpu --print-to-pdf https://thief.one/
+
+</code></pre>
+<h3 id="&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#24182;&#25130;&#22270;">&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#24182;&#25130;&#22270;<a class="anchor-link" href="#&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#24182;&#25130;&#22270;"></a></h3><p>使用<code>–screenshot</code>标志运行 Headless Chrome 将在当前工作目录中生成一个名为 <code>screenshot.png</code>的文件：</p>
+
+<pre><code>chrome --headless --disable-gpu --screenshot https://thief.one/
+# 设置图片大小
+google-chrome --headless --disable-gpu --screenshot --window-size=1280,1696 https://thief.one/
+
+</code></pre>
+<h3 id="&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#24182;&#36827;&#34892;js&#20132;&#20114;&#65288;REPL&#27169;&#24335;&#65289;">&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#24182;&#36827;&#34892;js&#20132;&#20114;&#65288;REPL&#27169;&#24335;&#65289;<a class="anchor-link" href="#&#35775;&#38382;&#19968;&#20010;&#32593;&#39029;&#24182;&#36827;&#34892;js&#20132;&#20114;&#65288;REPL&#27169;&#24335;&#65289;"></a></h3><p><code>–repl</code> 标志可以使 Headless Chrome 运行在一个你可以使用浏览器评估 JS 表达式的模式下。执行下面的命令：</p>
+
+<pre><code>google-chrome --headless --disable-gpu --repl https://thief.one
+
+&gt;&gt;&gt; location.href
+{"result":{"type":"string","value":"https://thief.one"}}
+&gt;&gt;&gt; quit
+
+</code></pre>
+<blockquote><p>实际使用不了，进入交互界面，一直有键盘输入，不知是否是系统问题？</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#21551;&#21160;&#19968;&#20010;&#30417;&#21548;&#31471;&#21475;">&#21551;&#21160;&#19968;&#20010;&#30417;&#21548;&#31471;&#21475;<a class="anchor-link" href="#&#21551;&#21160;&#19968;&#20010;&#30417;&#21548;&#31471;&#21475;"></a></h3>
+<pre><code>google-chrome --remote-debugging-port=9222
+
+google-chrome --headless --disable-gpu --remote-debugging-port=9222
+
+</code></pre>
+<p>可以通过浏览器打开：<a href="http://127.0.0.1:9222">http://127.0.0.1:9222</a></p>
+<blockquote><ul>
+<li>google-chrome --remote-debugging-port=9222
+<pre><code>(google-chrome:13677): Gtk-WARNING **: cannot open display: 
+[root@mainCentOS test]# [0613/121028.659089:ERROR:nacl_helper_linux.cc(310)] NaCl helper process running without a sandbox!
+Most likely you need to configure your SUID sandbox correctly</code></pre>
+</li>
+</ul>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#24037;&#20855;&#20171;&#32461;">&#24037;&#20855;&#20171;&#32461;<a class="anchor-link" href="#&#24037;&#20855;&#20171;&#32461;"></a></h2><h3 id="puppeteer-&#20171;&#32461;">puppeteer &#20171;&#32461;<a class="anchor-link" href="#puppeteer-&#20171;&#32461;"></a></h3><p>Puppeteer 是一个由 Chrome 团队开发的 Node 库。它提供了一个高层次的 API 来控制无需显示版（或 完全版）的 Chrome。它与其他自动化测试库，如 Phantom 和 NightmareJS 相类似，但是只适用于最新版本的 Chrome。</p>
+<p>puppeteer 安装</p>
+<div class="highlight"><pre><span></span><span class="c1"># 创建一个项目目录</span>
+mkdir puppeteer_test <span class="o">&amp;&amp;</span> <span class="nb">cd</span> puppeteer_test
+npm init -y
+npm i --save puppeteer
+</pre></div>
+<blockquote><ul>
+<li>安装puppeteer前需要在系统上安装nodejs与npm；安装完puppeteer，默认会自动安装最新版本的chromium。</li>
+<li>系统默认安装的npm与nodejs版本都很低，而使用puppeteer需要node6.4.0+，async/await需要node7.6.0+，因此建议安装node7.6.0版本，否则会导致无法使用。</li>
+</ul>
+</blockquote>
+<h4 id="puppeteer-&#20351;&#29992;">puppeteer &#20351;&#29992;<a class="anchor-link" href="#puppeteer-&#20351;&#29992;"></a></h4><p>在使用puppeteer前，先要确定puppeteer、nodejs、npm安装成功（版本正确），且headless chrome安装成功。</p>
+<p><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md">官方API文档</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="&#33719;&#21462;&#39029;&#38754;&#30340;&#23631;&#24149;&#25130;&#22270;&#65306;">&#33719;&#21462;&#39029;&#38754;&#30340;&#23631;&#24149;&#25130;&#22270;&#65306;<a class="anchor-link" href="#&#33719;&#21462;&#39029;&#38754;&#30340;&#23631;&#24149;&#25130;&#22270;&#65306;"></a></h4><p>创建一个example.js文件，写入：</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">puppeteer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;puppeteer&#39;</span><span class="p">);</span>
+<span class="p">(</span><span class="nx">async</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<span class="kr">const</span> <span class="nx">browser</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">puppeteer</span><span class="p">.</span><span class="nx">launch</span><span class="p">({</span>
+    <span class="nx">headless</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">args</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;--no-sandbox&#39;</span><span class="p">,</span> <span class="s1">&#39;--disable-setuid-sandbox&#39;</span><span class="p">],</span>
+<span class="p">});</span>
+<span class="kr">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">newPage</span><span class="p">();</span>
+<span class="nx">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s1">&#39;https://thief.one&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">waitUntil</span><span class="o">:</span> <span class="s1">&#39;networkidle2&#39;</span><span class="p">});</span>
+<span class="nx">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">pdf</span><span class="p">({</span><span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;screen.pdf&#39;</span><span class="p">,</span> <span class="nx">format</span><span class="o">:</span> <span class="s1">&#39;A4&#39;</span><span class="p">});</span>
+<span class="nx">browser</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">})();</span>
+</pre></div>
+
+<pre><code>node example.js
+
+</code></pre>
+<blockquote><p>在运行puppeteer之前不需要额外开启一个headless-chrome进程，因为其本身就会去开启。</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="pyppeteer">pyppeteer<a class="anchor-link" href="#pyppeteer"></a></h3><p>pyppeteer模版是对puppeteer的python封装，因为puppeteer是用nodejs写的，所以要在python中使用得用pyppeteer模块。</p>
+<p>pyppeteer安装
+pyppeteer模版只支持python3.5以上版本。</p>
+<p>1
+python3 -m pip install pyppeteer
+pyppeteer简单的例子
+截图：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">pyppeteer</span> <span class="kn">import</span> <span class="n">launch</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">browser</span> <span class="o">=</span> <span class="n">await</span> <span class="n">launch</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;--no-sandbox&#39;</span><span class="p">])</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">newPage</span><span class="p">()</span>
+    <span class="n">await</span> <span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s1">&#39;http://example.com&#39;</span><span class="p">)</span>
+    <span class="n">await</span> <span class="n">page</span><span class="o">.</span><span class="n">screenshot</span><span class="p">({</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;example.png&#39;</span><span class="p">})</span>
+    <span class="n">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+<blockquote><p>说明：在使用pyppeteer时，不需要额外开启headless-chrome进程（与puppeteer一样）。</p>
+<p>更多pyppeteer模版使用方法，参考：<a href="https://miyakogi.github.io/pyppeteer/reference.html#page-class">https://miyakogi.github.io/pyppeteer/reference.html#page-class</a></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="chrome-remote-interface&#24037;&#20855;">chrome-remote-interface&#24037;&#20855;<a class="anchor-link" href="#chrome-remote-interface&#24037;&#20855;"></a></h3><p>可以用来分析渲染一个页面过程中所有的请求过程，包括获取所有的请求接口以及响应内容等。再运行chrome-remote-interface代码前，需要先启动headless chrome进程，即：</p>
+
+<pre><code>chrome --headless --remote-debugging-port=9222
+
+</code></pre>
+<p>安装chrome-remote-interface：</p>
+
+<pre><code>npm install chrome-remote-interface
+
+</code></pre>
+<p>然后编写代码：(以获取所有请求url为例)</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">CDP</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chrome-remote-interface&#39;</span><span class="p">);</span>
+<span class="c1">// node nmask.js https://nmask.cn</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">target_url</span> <span class="o">=</span> <span class="nx">options</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="nx">CDP</span><span class="p">((</span><span class="nx">client</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// extract domains</span>
+    <span class="kr">const</span> <span class="p">{</span><span class="nx">Network</span><span class="p">,</span> <span class="nx">Page</span><span class="p">}</span> <span class="o">=</span> <span class="nx">client</span><span class="p">;</span>
+
+    <span class="c1">// setup handlers</span>
+    <span class="nx">Network</span><span class="p">.</span><span class="nx">requestWillBeSent</span><span class="p">((</span><span class="nx">params</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">Page</span><span class="p">.</span><span class="nx">loadEventFired</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">client</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="c1">// enable events then start!</span>
+    <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+        <span class="nx">Network</span><span class="p">.</span><span class="nx">enable</span><span class="p">(),</span>
+        <span class="nx">Page</span><span class="p">.</span><span class="nx">enable</span><span class="p">()</span>
+    <span class="p">]).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">Page</span><span class="p">.</span><span class="nx">navigate</span><span class="p">({</span><span class="nx">url</span><span class="o">:</span> <span class="nx">target_url</span><span class="p">});</span><span class="c1">//输出请求的url</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+        <span class="nx">client</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+<p>运行这段代码：</p>
+
+<pre><code>node nmask.js https://thief.one</code></pre>
+
+</div>
+</div>
 </div>
     </div>
   </div>
